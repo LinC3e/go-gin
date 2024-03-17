@@ -8,6 +8,7 @@ import (
 
 func main() {
 	r := gin.Default()
+	r.LoadHTMLGlob("templates/*")
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
@@ -16,8 +17,8 @@ func main() {
 	})
 
 	r.GET("/news", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "news",
+		c.HTML(http.StatusOK, "news.html", gin.H{
+			"title": "| News List",
 		})
 	})
 
